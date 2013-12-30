@@ -1,8 +1,8 @@
 defmodule HTTPotion do
-  defrecord Response, body: "", status_code: 0, headers: ""
+  defrecord Response, status_code: nil, body: nil, headers: []
 
-  def get("https://api.github.com/repos/good/success/issues", _agent), do: Response.new(body: "success", status_code: 200)
-  def get("https://api.github.com/repos/bad/error/issues", _agent), do: Response.new(body: "error", status_code: 404) 
+  def get("https://api.github.com/repos/good/success/issues", _agent), do: Response[status_code: 200, body: "success"]
+  def get("https://api.github.com/repos/bad/error/issues", _agent), do: Response[status_code: 404, body: "error"]
 end
 
 defmodule GithubIssuesTest do
